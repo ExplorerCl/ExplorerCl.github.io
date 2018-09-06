@@ -26,56 +26,7 @@
 </li>
 </ul>
 <h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p> <code>123123</code></p>
-<pre><code>` import { Component } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-  &lt;span&gt;
-    &lt;p&gt;uppercase&lt;/p&gt;
-    &lt;p&gt;{{'AnGuLar' | uppercase}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;lowercase&lt;/p&gt;
-    &lt;p&gt;{{'AnGuLar' | lowercase}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;number&lt;/p&gt;
-    &lt;p&gt;{{3.14159265 | number: '1.4-4'}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;date&lt;/p&gt;
-    &lt;p&gt;{{today | date:'shortTime'}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;age&lt;/p&gt;
-    &lt;p&gt;{{ {name:'sin',age:'22'} | json}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;Object&lt;/p&gt;
-    &lt;div *ngFor=&quot;let item of object | keyvalue&quot;&gt;
-      {{item.key}}:{{item.value}}
-    &lt;/div&gt;
-    &lt;p&gt;Map&lt;/p&gt;
-    &lt;div *ngFor=&quot;let item of map | keyvalue&quot;&gt;
-      {{item.key}}:{{item.value}}
-    &lt;/div&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;{{str}}[0:4]:&apos;{{ str | slice:0:4}}&apos;&lt;/p&gt;
-  &lt;/span&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent {
-  today = Date();
-
-  object: {[key:number]:string} = {2:&apos;foo&apos;,1:&apos;bar&apos;};
-
-  map = new Map([[1,&apos;bar&apos;], [2,&apos;foo&apos;]]);
-
-  str:string = &apos;TheKing&apos;
-} `
+<pre><code><figure class="highlight plain"><figcaption><span>&#123; Component &#125; from '@angular/core';</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-root&apos;,</span><br><span class="line">  template: `</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;uppercase&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;&apos;AnGuLar&apos; | uppercase&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;lowercase&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;&apos;AnGuLar&apos; | lowercase&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;number&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;3.14159265 | number: &apos;1.4-4&apos;&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;date&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;today | date:&apos;shortTime&apos;&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;age&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; &#123;name:&apos;sin&apos;,age:&apos;22&apos;&#125; | json&#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;Object&lt;/p&gt;</span><br><span class="line">    &lt;div *ngFor=&quot;let item of object | keyvalue&quot;&gt;</span><br><span class="line">      &#123;&#123;item.key&#125;&#125;:&#123;&#123;item.value&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;p&gt;Map&lt;/p&gt;</span><br><span class="line">    &lt;div *ngFor=&quot;let item of map | keyvalue&quot;&gt;</span><br><span class="line">      &#123;&#123;item.key&#125;&#125;:&#123;&#123;item.value&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  &lt;span&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;str&#125;&#125;[0:4]:&apos;&#123;&#123; str | slice:0:4&#125;&#125;&apos;&lt;/p&gt;</span><br><span class="line">  &lt;/span&gt;</span><br><span class="line">  `,</span><br><span class="line">  styleUrls: [&apos;./app.component.css&apos;]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppComponent &#123;</span><br><span class="line">  today = Date();</span><br><span class="line"></span><br><span class="line">  object: &#123;[key:number]:string&#125; = &#123;2:&apos;foo&apos;,1:&apos;bar&apos;&#125;;</span><br><span class="line"></span><br><span class="line">  map = new Map([[1,&apos;bar&apos;], [2,&apos;foo&apos;]]);</span><br><span class="line"></span><br><span class="line">  str:string = &apos;TheKing&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>JsonPipe和SlicePipe是非纯管道</p>
 </blockquote>
