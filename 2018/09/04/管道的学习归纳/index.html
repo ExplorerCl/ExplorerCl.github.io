@@ -1,5 +1,4 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>管道 | 七罪的前端学习小天地</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">管道</h1><a id="logo" href="/.">七罪的前端学习小天地</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">管道</h1><div class="post-meta">Sep 4, 2018</div><div class="post-content"><p>##内置管道种类</p>
-<ul>
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>管道 | 七罪的前端学习小天地</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">管道</h1><a id="logo" href="/.">七罪的前端学习小天地</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">管道</h1><div class="post-meta">Sep 4, 2018</div><div class="post-content"><h2 id="内置管道种类"><a href="#内置管道种类" class="headerlink" title="内置管道种类"></a>内置管道种类</h2><ul>
 <li>Strng -&gt; String<ul>
 <li>UpperCasePipe</li>
 <li>LowerCasePipe</li>
@@ -26,7 +25,7 @@
 </ul>
 </li>
 </ul>
-<p>###使用示例</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p> <code>123123</code></p>
 <pre><code>import { Component } from &apos;@angular/core&apos;;
 
 @Component({
@@ -80,9 +79,7 @@ export class AppComponent {
 </code></pre><blockquote>
 <p>JsonPipe和SlicePipe是非纯管道</p>
 </blockquote>
-<p>##自定义管道</p>
-<p>###创建管道文件</p>
-<pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
+<h2 id="自定义管道"><a href="#自定义管道" class="headerlink" title="自定义管道"></a>自定义管道</h2><h3 id="创建管道文件"><a href="#创建管道文件" class="headerlink" title="创建管道文件"></a>创建管道文件</h3><pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
 
 @Pipe({name:&apos;hello&apos;})
 export class HelloPipe implements PipeTransform{
@@ -99,8 +96,7 @@ export class HelloPipe implements PipeTransform{
 <p>管道也是一种类。</p>
 <p>@Pipe装饰器中装的是管道的名字，用来在模板中使用，这个命名必须是一个有效的JavaScript标识符。</p>
 </blockquote>
-<p>###在AppModule中声明</p>
-<pre><code>import { HelloPipe } from &apos;./hello.pipe&apos;;
+<h3 id="在AppModule中声明"><a href="#在AppModule中声明" class="headerlink" title="在AppModule中声明"></a>在AppModule中声明</h3><pre><code>import { HelloPipe } from &apos;./hello.pipe&apos;;
 
 
 @NgModule({
@@ -113,14 +109,11 @@ export class HelloPipe implements PipeTransform{
   bootstrap: [...]
 })
 export class AppModule { }
-</code></pre><p>###在模板中使用</p>
-<pre><code>&lt;span&gt;
+</code></pre><h3 id="在模板中使用"><a href="#在模板中使用" class="headerlink" title="在模板中使用"></a>在模板中使用</h3><pre><code>&lt;span&gt;
   &lt;p&gt;自定义管道&lt;/p&gt;
   &lt;p&gt;{{'sin' | hello}}&lt;/p&gt;
 &lt;/span&gt;
-</code></pre><p>#自定义管道（非纯）</p>
-<p>##创建管道文件</p>
-<pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
+</code></pre><h1 id="自定义管道（非纯）"><a href="#自定义管道（非纯）" class="headerlink" title="自定义管道（非纯）"></a>自定义管道（非纯）</h1><h2 id="创建管道文件-1"><a href="#创建管道文件-1" class="headerlink" title="创建管道文件"></a>创建管道文件</h2><pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
 
 @Pipe({
     name:&apos;dollar&apos;,
@@ -135,8 +128,7 @@ export class DollarPipe implements PipeTransform{
         return value;
     }
 } 
-</code></pre><p>##在AppModule中导入</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
+</code></pre><h2 id="在AppModule中导入"><a href="#在AppModule中导入" class="headerlink" title="在AppModule中导入"></a>在AppModule中导入</h2><pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
 import { NgModule } from &apos;@angular/core&apos;;
 
 import { AppComponent } from &apos;./app.component&apos;;
@@ -162,8 +154,7 @@ export class AppModule { }
 </code></pre><blockquote>
 <p>这里导入了FormsModule是为了使用双向绑定语法。</p>
 </blockquote>
-<p>##使用非纯管道</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
+<h2 id="使用非纯管道"><a href="#使用非纯管道" class="headerlink" title="使用非纯管道"></a>使用非纯管道</h2><pre><code>import { Component } from &apos;@angular/core&apos;;
 import { DollarPipe } from &apos;./dollar.pipe&apos;;
 
 
@@ -181,10 +172,8 @@ import { DollarPipe } from &apos;./dollar.pipe&apos;;
 export class AppComponent {
 
 }
-</code></pre><p>##使用感想</p>
-<p>我特地在管道文件中设置了console.log，用于观察非纯管道的触发次数和时机。然后发现每次触发管道，都会有两次console.log事件，也就是说管道本身触发过两次，并且当输入框失去焦点也会触发管道。的确可以看出非纯管道的触发特点，但是同时也担心其对性能的影响。</p>
-<p>#整体总结</p>
-<blockquote>
+</code></pre><h2 id="使用感想"><a href="#使用感想" class="headerlink" title="使用感想"></a>使用感想</h2><p>我特地在管道文件中设置了console.log，用于观察非纯管道的触发次数和时机。然后发现每次触发管道，都会有两次console.log事件，也就是说管道本身触发过两次，并且当输入框失去焦点也会触发管道。的确可以看出非纯管道的触发特点，但是同时也担心其对性能的影响。</p>
+<h1 id="整体总结"><a href="#整体总结" class="headerlink" title="整体总结"></a>整体总结</h1><blockquote>
 <p>管道是个非常实用的一个技术，并且还可以在组件类中进行使用（在组件类中触发该管道的transform方法）。纯管道和非纯管道，使用谁需要针对具体情况，非纯管道虽然会影响性能，但是正确使用的话应该影响还是不大，毕竟内置管道中的JsonPipe和SlicePipe就是非纯管道。</p>
 </blockquote>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/09/06/博客说明/"></a><a class="next" href="/2018/09/03/依赖注入学习归纳/"></a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/angular/" style="font-size: 15px;">angular</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/测试文档/">测试文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Hexo博客建立/">Hexo博客建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/博客说明/">博客说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/管道的学习归纳/">管道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/依赖注入学习归纳/">依赖注入学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/表单学习归纳/">表单学习归纳</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">七罪的前端学习小天地.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/09/06/博客说明/">关于本博客</a><a class="next" href="/2018/09/03/依赖注入学习归纳/"></a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/angular/" style="font-size: 15px;">angular</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/测试文档/">测试文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Hexo博客建立/">Hexo博客建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/博客说明/">关于本博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/管道的学习归纳/">管道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/依赖注入学习归纳/">依赖注入学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/表单学习归纳/">表单学习归纳</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">七罪的前端学习小天地.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
