@@ -8,13 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#表单学习归纳 ##模板驱动式表单 ###模板驱动式表单的概念顾名思义，模板驱动模板驱动，是以模板为基本来进行搭建的表单。利用一些自带的特性属性，在模板进行表单的验证，可以让组件的内容最简化。模板驱动式表单是angular最早的表单。 ###模板驱动式表单建立步骤  Base  首先，既然叫做模板驱动式表单，那肯定需要最重要的模板了。 &amp;lt;form novalidate&amp;gt;   &amp;lt;l">
+<meta property="og:type" content="article">
 <meta property="og:title">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/29/表单学习归纳/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="#表单学习归纳 ##模板驱动式表单 ###模板驱动式表单的概念顾名思义，模板驱动模板驱动，是以模板为基本来进行搭建的表单。利用一些自带的特性属性，在模板进行表单的验证，可以让组件的内容最简化。模板驱动式表单是angular最早的表单。 ###模板驱动式表单建立步骤  Base  首先，既然叫做模板驱动式表单，那肯定需要最重要的模板了。 &amp;lt;form novalidate&amp;gt;   &amp;lt;l">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-30T01:55:17.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title">
+<meta name="twitter:description" content="#表单学习归纳 ##模板驱动式表单 ###模板驱动式表单的概念顾名思义，模板驱动模板驱动，是以模板为基本来进行搭建的表单。利用一些自带的特性属性，在模板进行表单的验证，可以让组件的内容最简化。模板驱动式表单是angular最早的表单。 ###模板驱动式表单建立步骤  Base  首先，既然叫做模板驱动式表单，那肯定需要最重要的模板了。 &amp;lt;form novalidate&amp;gt;   &amp;lt;l">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -150,1105 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-博客说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#关于本博客</p>
-<blockquote>
-<p>这个博客用于个人的学习归纳文档的存放。目前正在学习Angular。</p>
-</blockquote>
-<blockquote>
-<p>后续会尝试自己写一个尽量详细的教程。（主要是在我目前学习的教程上进行一些细节的补充和说明，方便新手理解）</p>
-</blockquote>
-<blockquote>
-<p>目前的学习教程地址：<a href="http://www.semlinker.com/" title="前端修仙之路" target="_blank" rel="noopener">前端修仙之路</a> |<br><a href="https://segmentfault.com/a/1190000008754631" title="Angular 4.x 修仙之路" target="_blank" rel="noopener">Angular 4.x 修仙之路</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/06/博客说明/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-管道的学习归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#管道（纯管道）</p>
-<p>##内置管道种类</p>
-<ul>
-<li>Strng -&gt; String<ul>
-<li>UpperCasePipe</li>
-<li>LowerCasePipe</li>
-<li>TitleCasePipe</li>
-</ul>
-</li>
-<li>Number -&gt; String<ul>
-<li>DecimalPipe</li>
-<li>PercentPipe</li>
-<li>CurrencyPipe</li>
-</ul>
-</li>
-<li>Object -&gt; String<ul>
-<li>JsonPipe</li>
-<li>DatePipe</li>
-</ul>
-</li>
-<li>Tools<ul>
-<li>KeyValuePipe</li>
-<li>SlicePipe</li>
-<li>AsyncPipe</li>
-<li>I18nPluralPipe</li>
-<li>I18nSelectPipe</li>
-</ul>
-</li>
-</ul>
-<p>###使用示例</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-  &lt;span&gt;
-    &lt;p&gt;uppercase&lt;/p&gt;
-    &lt;p&gt;{{'AnGuLar' | uppercase}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;lowercase&lt;/p&gt;
-    &lt;p&gt;{{'AnGuLar' | lowercase}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;number&lt;/p&gt;
-    &lt;p&gt;{{3.14159265 | number: '1.4-4'}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;date&lt;/p&gt;
-    &lt;p&gt;{{today | date:'shortTime'}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;age&lt;/p&gt;
-    &lt;p&gt;{{ {name:'sin',age:'22'} | json}}&lt;/p&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;Object&lt;/p&gt;
-    &lt;div *ngFor=&quot;let item of object | keyvalue&quot;&gt;
-      {{item.key}}:{{item.value}}
-    &lt;/div&gt;
-    &lt;p&gt;Map&lt;/p&gt;
-    &lt;div *ngFor=&quot;let item of map | keyvalue&quot;&gt;
-      {{item.key}}:{{item.value}}
-    &lt;/div&gt;
-  &lt;/span&gt;
-  &lt;span&gt;
-    &lt;p&gt;{{str}}[0:4]:&apos;{{ str | slice:0:4}}&apos;&lt;/p&gt;
-  &lt;/span&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent {
-  today = Date();
-
-  object: {[key:number]:string} = {2:&apos;foo&apos;,1:&apos;bar&apos;};
-
-  map = new Map([[1,&apos;bar&apos;], [2,&apos;foo&apos;]]);
-
-  str:string = &apos;TheKing&apos;
-}
-</code></pre><blockquote>
-<p>JsonPipe和SlicePipe是非纯管道</p>
-</blockquote>
-<p>##自定义管道</p>
-<p>###创建管道文件</p>
-<pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
-
-@Pipe({name:&apos;hello&apos;})
-export class HelloPipe implements PipeTransform{
-    transform(value: string):string{
-        if(!value) return value;
-        if(typeof value !== &apos;string&apos;){
-            throw new Error(&apos;Invalid pipe argument for HelloPipe&apos;);
-        }
-        return &quot;Hello,&quot; + value;
-    }
-}
-</code></pre><blockquote>
-<p>transform是管道的基本要素，angular会直接查找并执行transform。</p>
-<p>管道也是一种类。</p>
-<p>@Pipe装饰器中装的是管道的名字，用来在模板中使用，这个命名必须是一个有效的JavaScript标识符。</p>
-</blockquote>
-<p>###在AppModule中声明</p>
-<pre><code>import { HelloPipe } from &apos;./hello.pipe&apos;;
-
-
-@NgModule({
-  declarations: [
-    ...，
-    HelloPipe
-  ],
-  imports: [...],
-  providers: [],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><p>###在模板中使用</p>
-<pre><code>&lt;span&gt;
-  &lt;p&gt;自定义管道&lt;/p&gt;
-  &lt;p&gt;{{'sin' | hello}}&lt;/p&gt;
-&lt;/span&gt;
-</code></pre><p>#自定义管道（非纯）</p>
-<p>##创建管道文件</p>
-<pre><code>import { Pipe, PipeTransform } from &quot;@angular/core&quot;;
-
-@Pipe({
-    name:&apos;dollar&apos;,
-    pure:false
-})
-export class DollarPipe implements PipeTransform{
-    i = 1;
-    transform(value:number):number{
-        if(!value) return value;
-        value = value * 6.8427;
-        console.log(&apos;DollarPipe&apos;,this.i++)
-        return value;
-    }
-} 
-</code></pre><p>##在AppModule中导入</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
-import { NgModule } from &apos;@angular/core&apos;;
-
-import { AppComponent } from &apos;./app.component&apos;;
-import { HelloPipe } from &apos;./hello.pipe&apos;;
-import { DollarPipe } from &apos;./dollar.pipe&apos;;
-import { FormsModule } from &apos;@angular/forms&apos;;
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HelloPipe,
-    DollarPipe
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>这里导入了FormsModule是为了使用双向绑定语法。</p>
-</blockquote>
-<p>##使用非纯管道</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
-import { DollarPipe } from &apos;./dollar.pipe&apos;;
-
-
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-  &lt;span&gt;
-    &lt;p&gt;{{rmb | dollar}}$&lt;/p&gt;
-    &lt;input type=&quot;text&quot; [(ngModel)]=&quot;rmb&quot; placeholder=&quot;人民币换算美金&quot; /&gt;
-  &lt;/span&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent {
-
-}
-</code></pre><p>##使用感想</p>
-<p>我特地在管道文件中设置了console.log，用于观察非纯管道的触发次数和时机。然后发现每次触发管道，都会有两次console.log事件，也就是说管道本身触发过两次，并且当输入框失去焦点也会触发管道。的确可以看出非纯管道的触发特点，但是同时也担心其对性能的影响。</p>
-<p>#整体总结</p>
-<blockquote>
-<p>管道是个非常实用的一个技术，并且还可以在组件类中进行使用（在组件类中触发该管道的transform方法）。纯管道和非纯管道，使用谁需要针对具体情况，非纯管道虽然会影响性能，但是正确使用的话应该影响还是不大，毕竟内置管道中的JsonPipe和SlicePipe就是非纯管道。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/04/管道的学习归纳/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-依赖注入学习归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#组件服务注入<br>在组件中注入服务。</p>
-<p>##创建基础组件</p>
-<blockquote>
-<p>在组件中直接创建用户的信息。</p>
-</blockquote>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users:Array&lt;{id:number;age:number;name:string}&gt;;
-
-  constructor(){}
-
-  ngOnInit(){
-    this.users = [
-      {id:1,age:20,name:&quot;sin&quot;},
-      {id:2,age:20,name:&quot;Angular&quot;},
-      {id:3,age:20,name:&quot;TypeScript&quot;},
-      {id:4,age:20,name:&quot;Node&quot;},
-      {id:5,age:20,name:&quot;Git&quot;},
-    ]
-  }
-}
-</code></pre><p>##在AppModule中导入该组件</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
-import { NgModule } from &apos;@angular/core&apos;;
-
-import { AppComponent } from &apos;./app.component&apos;;
-import { UserComponent } from &apos;./user.component&apos;;
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-</code></pre><p>##在AppComponent中使用这个模板</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-    &lt;app-user&gt;&lt;/app-user&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent{
-
-}
-</code></pre><p>##创建服务，使用服务来进行用户列表信息的储存</p>
-<p>###创建服务文件</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class UserService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:1,age:20,name:&quot;sin&quot;},
-        {id:2,age:20,name:&quot;Angular&quot;},
-        {id:3,age:20,name:&quot;TypeScript&quot;},
-        {id:4,age:20,name:&quot;Node&quot;},
-        {id:5,age:20,name:&quot;Git&quot;},
-      ]
-}
-</code></pre><blockquote>
-<p>要养成一个习惯，无论有没有注入，在创建服务文件的时候都要创建Injectable装饰器。</p>
-</blockquote>
-<p>###在AppModule中导入服务</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class UserService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:1,age:20,name:&quot;sin&quot;},
-        {id:2,age:20,name:&quot;Angular&quot;},
-        {id:3,age:20,name:&quot;TypeScript&quot;},
-        {id:4,age:20,name:&quot;Node&quot;},
-        {id:5,age:20,name:&quot;Git&quot;},
-      ]
-
-    getLog(){
-        console.log(&apos;用户信息&apos;,this.users);
-    }
-}
-</code></pre><blockquote>
-<p>这里估计设置了一个方法，因为服务主要作用还是提供一些隐式的功能（运行过程不会在页面上有显示的功能）。</p>
-</blockquote>
-<p>###在组件中注入该服务并使用</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-import { UserService } from &apos;./user.service&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users:Array&lt;{id:number;age:number;name:string}&gt;;
-
-  constructor(private userService:UserService){}
-
-  ngOnInit(){
-    this.users = this.userService.users;
-    this.userService.getLog();
-  }
-}
-</code></pre><p>#ClassProvider类提供商</p>
-<p>##Demo</p>
-<blockquote>
-<p>这里使用别名类提供商进行一个示例的编写</p>
-</blockquote>
-<p>###创建一个新的服务<br>    import { Injectable } from “@angular/core”;</p>
-<pre><code>@Injectable()
-export class MarkService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:11,age:21,name:&quot;狗蛋&quot;},
-        {id:12,age:22,name:&quot;二狗子&quot;},
-        {id:13,age:23,name:&quot;小虎&quot;},
-        {id:14,age:24,name:&quot;傻根&quot;},
-        {id:15,age:25,name:&quot;三儿&quot;},
-      ]
-
-    getLog(){
-        console.log(&apos;用户信息&apos;,this.users);
-    }
-}
-</code></pre><p>###更新AppModule代码</p>
-<pre><code>import { UserService } from &apos;./user.service&apos;;
-import { MarkService } from &apos;./mark.service&apos;;
-
-@NgModule({
-  declarations: [...],
-  imports: [...],
-  providers: [
-    {provide:UserService,useClass:MarkService}
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>请求UserService时，返回MarkService</p>
-</blockquote>
-<p>###运行结果</p>
-<pre><code>ID：11 - 年龄：21 - 姓名：狗蛋
-ID：12 - 年龄：22 - 姓名：二狗子
-ID：13 - 年龄：23 - 姓名：小虎
-ID：14 - 年龄：24 - 姓名：傻根
-ID：15 - 年龄：25 - 姓名：三儿
-</code></pre><p>##总结<br>类提供商有许多用法，基本的类提供商有两种写法。<br>第一种是全部写出来的，比如上面的示例：</p>
-<blockquote>
-<p>providers: [{provide:UserService,useClass:MarkService}]</p>
-</blockquote>
-<p>第二种是简写：</p>
-<blockquote>
-<p>providers:[UserService]</p>
-</blockquote>
-<blockquote>
-<p>这个式子等同于：</p>
-</blockquote>
-<blockquote>
-<p>providers: [{provide:UserService,useClass:UserService}]</p>
-</blockquote>
-<p>#FactoryProvider工厂提供商</p>
-<p>##Demo</p>
-<p>###创建一个新的服务文件</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class LoggerService{
-    constructor(private enable:boolean){}
-    log(message){
-        if(this.enable){
-            console.log(`LoggerService:${message}`);
-        }
-    }
-}
-</code></pre><blockquote>
-<p>构造函数中的private enable:boolean表示我们要注入Type类型的对象。boolean是表示基本数据类型，并不是所需的Type类型</p>
-</blockquote>
-<p>###在AppModule中导入该服务</p>
-<pre><code>import { LoggerService } from &apos;./logger.service&apos;;
-
-@NgModule({
-  declarations: [...],
-  imports: [...],
-  providers: [
-    ...
-    {provide:LoggerService,useFactory:()=&gt;{
-      return new LoggerService(true);
-    }}
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>这里的useFactory就是FactoryProvider的创建方法。</p>
-</blockquote>
-<p>###在模板中使用</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-import { UserService } from &apos;./user.service&apos;;
-import { LoggerService } from &apos;./logger.service&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users:Array&lt;{id:number;age:number;name:string}&gt;;
-
-  constructor(private userService:UserService,private loggerService:LoggerService){}
-
-  ngOnInit(){
-    this.users = this.userService.users;
-    this.userService.getLog();
-    this.loggerService.log(&apos;你好&apos;);
-  }
-}
-</code></pre><p>##使用FactoryProvider的deps属性配置依赖对象</p>
-<p>###创建一个新的服务</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class ConsoleService{
-    log(message){
-        console.log(`ConsoleService:${message}`);
-    }
-}
-</code></pre><p>###将新的服务注入进LoggerService中</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-import { ConsoleService } from &quot;./console.service&quot;;
-
-@Injectable()
-export class LoggerService{
-    constructor(private enable:boolean,private consoleService:ConsoleService){}
-    log(message){
-        if(this.enable){
-            console.log(`LoggerService:${message}`);
-        }
-    }
-}
-</code></pre><blockquote>
-<p>依赖注入可以把服务注入组件中，也可以把一个服务注入其他服务中。</p>
-</blockquote>
-<p>###在AppModule中使用deps属性<br>AppModule整体代码如下：</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
-import { NgModule } from &apos;@angular/core&apos;;
-
-import { AppComponent } from &apos;./app.component&apos;;
-import { UserComponent } from &apos;./user.component&apos;;
-import { UserService } from &apos;./user.service&apos;;
-import { MarkService } from &apos;./mark.service&apos;;
-import { LoggerService } from &apos;./logger.service&apos;;
-import { ConsoleService } from &apos;./console.service&apos;;
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [
-    {provide:UserService,useClass:MarkService},
-    ConsoleService,
-    {provide:LoggerService,useFactory:(consoleService)=&gt;{
-      return new LoggerService(true,consoleService);
-    },deps:[ConsoleService]}
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>正常情况下，ConsoleService是为了防止在其他平台（除浏览器以外的）运行时，console.log()出现问题，而在内部实现一个统一的console接口，这里不做内部实现，只是简单制作一个ConsoleService来展示deps属性的使用。</p>
-</blockquote>
-<p>##总结</p>
-<p>工厂提供商，指的是提供商是一个工厂方法。可以用于动态创建依赖值（特别是创建的所需信息最后才能确定或者不停变化的时候）。必须使用对应的useFactory才可以创建工厂提供商。deps属性用于声明工厂方法的依赖对象列表，可以声明多个。</p>
-<p>#Value值提供商</p>
-<p>##创建user.json文件</p>
-<pre><code>{
- &quot;users&quot;:[
-    {&quot;id&quot;:21,&quot;age&quot;:20,&quot;name&quot;:&quot;sin&quot;},
-    {&quot;id&quot;:22,&quot;age&quot;:20,&quot;name&quot;:&quot;Angular&quot;},
-    {&quot;id&quot;:23,&quot;age&quot;:20,&quot;name&quot;:&quot;TypeScript&quot;},
-    {&quot;id&quot;:24,&quot;age&quot;:20,&quot;name&quot;:&quot;Node&quot;},
-    {&quot;id&quot;:25,&quot;age&quot;:20,&quot;name&quot;:&quot;Git&quot;}
- ]
-}
-</code></pre><blockquote>
-<p>配合使用json-server来模拟搭建一个后台接口</p>
-</blockquote>
-<p>##更新user.service.ts文件，使用httpClient请求</p>
-<pre><code>import { Injectable, Inject } from &quot;@angular/core&quot;;
-import { HttpClient } from &quot;@angular/common/http&quot;;
-
-@Injectable()
-export class UserService {
-    constructor(private http:HttpClient,@Inject(&apos;apiUrl&apos;) private apiUrl){}
-    users;
-
-    getLog(callback){
-        return this.http.get(this.apiUrl)
-            .subscribe(data =&gt;{
-                this.users = data;
-                callback(data);
-            })
-    }
-}
-</code></pre><p>##在AppModule中使用ValueProvider</p>
-<pre><code>import {HttpClientModule} from &apos;@angular/common/http&apos;
-
-@NgModule({
-  declarations: [...],
-  imports: [
-    ...
-    HttpClientModule
-  ],
-  providers: [
-    ...
-    {provide:&apos;apiUrl&apos;,useValue:&apos;http://localhost:3000/users&apos;}
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><p>##更新用户组件</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-import { UserService } from &apos;./user.service&apos;;
-import { LoggerService } from &apos;./logger.service&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users;
-
-  constructor(private userService:UserService,private loggerService:LoggerService){}
-
-  ngOnInit(){
-    this.userService.getLog(data=&gt;{
-      this.users = data;
-    });
-    this.loggerService.log(&apos;你好&apos;);
-  }
-}
-</code></pre><p>##输出结果</p>
-<pre><code>ID：21 - 年龄：20 - 姓名：sin
-ID：22 - 年龄：20 - 姓名：Angular
-ID：23 - 年龄：20 - 姓名：TypeScript
-ID：24 - 年龄：20 - 姓名：Node
-ID：25 - 年龄：20 - 姓名：Git
-</code></pre><p>##总结</p>
-<p>ValueProvider可以用来储存http的地址，特别是在多个组件需要同时请求同一个地址时。</p>
-<p>#InjectToken</p>
-<p>##假设使用场景<br>假设上述代码，引入第三方库，第三方库中有一个使用了相同字符串的Token，这样会导致http请求失败，或者第三方库无法正常工作。</p>
-<p>###创建一个文件来模拟第三方库</p>
-<blockquote>
-<p>third-lib.ts</p>
-</blockquote>
-<pre><code>export const THIRD_PARTY_PROVIDERS = [
-    {
-        provide: &apos;apiUrl&apos;,
-        useValue: &apos;Other Url&apos;
-    }
-]
-</code></pre><p>###导入AppModule</p>
-<pre><code>import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
-
-@NgModule({
-  declarations: [...],
-  imports: [
-    ...
-  ],
-  providers: [
-    ...
-    {provide:&apos;apiUrl&apos;,useValue:&apos;http://localhost:3000/users&apos;}，
-    THIRD_PARTY_PROVIDERS
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>这时候页面已经会发生报错，并且不能正确请求数据，原因是请求的地址发生改变。</p>
-</blockquote>
-<p>###新建一个用来保存Token的文件</p>
-<blockquote>
-<p>app.token.ts</p>
-</blockquote>
-<pre><code>import { InjectionToken } from &apos;@angular/core&apos;;
-
-export const API_URL = new InjectionToken&lt;string&gt;(&apos;apiUrl&apos;);
-</code></pre><p>###更新AppModule</p>
-<pre><code>import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
-import { API_URL } from &apos;./app.tokens&apos;;
-
-@NgModule({
-  declarations: [...],
-  imports: [...],
-  providers: [
-    ...
-    {provide:API_URL,useValue:&apos;http://localhost:3000/users&apos;},
-    THIRD_PARTY_PROVIDERS
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>这里的代码就变成了当请求内容为API_URL文件内容时，返回useValue的值</p>
-</blockquote>
-<p>###更新UserService服务</p>
-<pre><code>import { Injectable, Inject } from &quot;@angular/core&quot;;
-import { HttpClient } from &quot;@angular/common/http&quot;;
-import { API_URL } from &quot;./app.tokens&quot;;
-
-@Injectable()
-export class UserService {
-    constructor(private http:HttpClient,@Inject(API_URL) private apiUrl){}
-    users;
-
-    getLog(callback){
-        return this.http.get(this.apiUrl)
-            .subscribe(data =&gt;{
-                this.users = data;
-                callback(data);
-            })
-    }
-}
-</code></pre><blockquote>
-<p>修改注入的参数</p>
-</blockquote>
-<p>###验证</p>
-<pre><code>import { InjectionToken } from &apos;@angular/core&apos;;
-
-const API_URL = new InjectionToken&lt;string&gt;(&apos;apiUrl&apos;);
-
-export const THIRD_PARTY_PROVIDERS = [
-    {
-        provide: API_URL,
-        useValue: &apos;Other Url&apos;
-    }
-]
-</code></pre><blockquote>
-<p>将模拟的第三方库修改一下，把Token修改成一致的，来验证InjectToken的作用是否还能生效。结果是生效的。</p>
-</blockquote>
-<p>##总结</p>
-<p>InjectToken是一个很好的解决字符串Token冲突的方法，在开发其他应用时，如果使用字符串Token，直接使用InjectToken。这样可以避免后期新增引入第三方库出现冲突情况。</p>
-<p>#使用感想<br>依赖注入是Angular一个非常强大并且实用的技术，许多项目都能使用到，方便程序员后期查询某些代码时更加方便，也让组件的代码变得更加简洁明了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/03/依赖注入学习归纳/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-自定义指令的学习归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#自定义指令的学习归纳</p>
-<p>##属性型指令</p>
-<p>###属性型指令的概念<br>属性型指令用于改变DOM元素的外观或者行为。</p>
-<p>###自定义属性型指令建立步骤</p>
-<ul>
-<li>首先定义一个相应的指令文件。</li>
-</ul>
-<p>定义一个基础的指令文件，方便等下进行相应的功能添加。</p>
-<pre><code>import { Directive, ElementRef } from &apos;@angular/core&apos;;
-
-@Directive({
-    selector: &apos;[phone-number]&apos;
-})
-
-export class PhoneNumberDirective{
-    constructor(private elemenet:ElementRef){
-        console.log(this.elemenet);
-    }
-}
-</code></pre><ul>
-<li>在根模组中导入指令</li>
-</ul>
-<p>同时还要使用declarations声明成内部成员变量</p>
-<pre><code>import { PhoneNumberDirective } from &apos;./PhoneNumberDirective&apos;;
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    PhoneNumberDirective
-  ],
-  imports: [...],
-  providers: [...],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><ul>
-<li>然后在模板中进行使用</li>
-</ul>
-<p>把选择器名称添加进模板里就可以进行使用了。</p>
-<pre><code>&lt;label&gt;
-  请输入你的手机号码
-  &lt;input name=&quot;phone-number&quot; type=&quot;text&quot; placeholder=&quot;请输入您的手机号码&quot; phone-number&gt;
-&lt;/label&gt;
-</code></pre><ul>
-<li>使用HostListener添加事件监听</li>
-</ul>
-<p>利用键盘事件监听，完成相应的功能</p>
-<pre><code>import { Directive, HostListener } from &apos;@angular/core&apos;;
-
-@Directive({
-    ...
-})
-
-export class PhoneNumberDirective{
-    @HostListener(&apos;input&apos;,[&apos;$event&apos;])
-    onkeydown(event:KeyboardEvent){
-        const input = event.target as HTMLInputElement;
-
-        let trimmed = input.value.replace(/\s+/g,&apos;&apos;);
-
-        if(trimmed.length &gt; 11){
-            trimmed = trimmed.substr(0,11);
-        }
-
-        let numbers = [];
-
-        numbers.push(trimmed.substr(0,3));
-
-        for(let i=3;i&lt;trimmed.length;i+=4){
-            numbers.push(trimmed.substr(i,4));
-        }
-        input.value = numbers.join(&apos; &apos;);
-    }
-}
-</code></pre><ul>
-<li>使用HostBinding来设置宿主元素的属性</li>
-</ul>
-<p>先在指令文件中的组件类里使用HostBinding装饰器，这里设置的是宿主元素的边框。</p>
-<pre><code>@HostBinding(&apos;sytle.border&apos;)
-border:string;
-</code></pre><p>然后在onkeydown方法里新增以下代码：</p>
-<pre><code>this.border = &apos;&apos;;
-if(/[^\d]+/.test(trimmed)){
-    this.border = &apos;5px solid red&apos;;
-}
-</code></pre><ul>
-<li>指令文件的所有整体代码如下</li>
-</ul>
-<p>这里需要注意，@HostBinding装饰器必须写在@HostListener装饰器之前，否则会出现报错的情况。</p>
-<pre><code>import { Directive, ElementRef, HostListener, HostBinding } from &apos;@angular/core&apos;;
-
-@Directive({
-    selector: &apos;[phone-number]&apos;
-})
-
-export class PhoneNumberDirective{
-    @HostBinding(&apos;style.border&apos;)
-    border:string;
-
-    @HostListener(&apos;input&apos;,[&apos;$event&apos;])
-    onkeydown(event:KeyboardEvent){
-        const input = event.target as HTMLInputElement;
-
-        let trimmed = input.value.replace(/\s+/g,&apos;&apos;);
-
-        if(trimmed.length &gt; 11){
-            trimmed = trimmed.substr(0,11);
-        }
-
-        let numbers = [];
-
-        numbers.push(trimmed.substr(0,3));
-
-        for(let i=3;i&lt;trimmed.length;i+=4){
-            numbers.push(trimmed.substr(i,4));
-        }
-        input.value = numbers.join(&apos; &apos;);
-
-        this.border = &apos;&apos;;
-        if(/[^\d]+/.test(trimmed)){
-            this.border = &apos;5px solid red&apos;;
-        }
-    }
-}
-</code></pre><p>###整体思路总结</p>
-<blockquote>
-<p>自定义属性指令的构建整体思路：</p>
-</blockquote>
-<blockquote>
-<p>创建指令文件 -&gt; 根模组导入 -&gt; 模板里使用 -&gt; 使用HostListener完成事件监听，并且写出需要的事件代码 -&gt; 使用HostBinding来控制宿主元素的属性值。</p>
-</blockquote>
-<p>###过程中所遇问题<br>在电话间隔的功能实现过程中，由于代码循环条件和循环代码的嵌套结构出错，导致循环条件无限循环，控制台的日志情况在无限增长，出现了无法关闭的情况。<br>后续重新修改，但是未修改循环条件（i+=4写成i+4），然后一输入就会出现了“devtools was disconnected from the page的问题”，并且页面直接崩溃。</p>
-<blockquote>
-<p>反思：需要在写循环方法等的嵌套结构时，先理清一个整体的思路，再进行结构的编写。同时要对一些常见的代码条件等进行严谨的审查。</p>
-</blockquote>
-<p>##自定义结构指令</p>
-<p>###自定义结构指令的概念<br>结构指令用于动态添加或删除DOM结构，以此来改变DOM的布局。</p>
-<p>###自定义结构指令建立步骤</p>
-<ul>
-<li>首先也是创建一个基础的指令文件</li>
-</ul>
-<p>定义一个基础的指令文件，方便等下进行相应的功能添加。</p>
-<pre><code>import { Directive } from &apos;@angular/core&apos;;
-
-@Directive({
- selector: &apos;[unless]&apos;
-})
-export class UnlessDirective {}
-</code></pre><ul>
-<li>在根模组中导入指令</li>
-</ul>
-<p>同时还要使用declarations声明成内部成员变量</p>
-<pre><code>import { UnlessDirective } from &apos;./PhoneNumberDirective&apos;;
-
-
-@NgModule({
-  declarations: [
-    ...,
-    UnlessDirective
-  ],
-  imports: [...],
-  providers: [...],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><ul>
-<li>在模型中使用</li>
-</ul>
-<p>结构指令需要用到*号</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-    &lt;div *heyUnless=&quot;condition&quot;&gt;Hey,man&lt;/div&gt;
-    &lt;button (click)=&quot;condition=!condition&quot; style=&quot;margin-top:50px;&quot;&gt;点我&lt;/button&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent {
-
-}
-</code></pre><ul>
-<li>使用Input、TemplateRef和ViewContainerRef来构建指令的内部功能</li>
-</ul>
-<p>TemplateRef和ViewContainerRef需要注入到构造函数中，设置成该指令的私有类。</p>
-<pre><code>import { Directive, Input, TemplateRef, ViewContainerRef } from &quot;@angular/core&quot;;
-
-
-@Directive({
-    selector: &apos;[heyUnless]&apos;
-})
-export class UnlessDirective{
-    constructor(
-        private templateRef: TemplateRef&lt;any&gt;,
-        private viewContainer: ViewContainerRef
-    ){}
-
-    @Input(&apos;heyUnless&apos;)
-    set condition(newCondition:boolean){
-        if(!newCondition){
-            this.viewContainer.createEmbeddedView(this.templateRef);
-        }else{
-            this.viewContainer.clear();
-        }
-    }
-}
-</code></pre><p>###整体思路总结</p>
-<blockquote>
-<p>自定义结构指令的构建整体思路：</p>
-</blockquote>
-<blockquote>
-<p>创建指令文件 -&gt; 根模组导入 -&gt; 模板里使用 -&gt; 使用Input、TemplateRef和ViewContainerRef来构建指令的内部功能</p>
-</blockquote>
-<p>##自定义指令的使用感受</p>
-<blockquote>
-<p>自定义指令分为三种，还有一种是组件，组件是拥有模板的指令。</p>
-</blockquote>
-<blockquote>
-<p>自定义属性指令和自定义结构指令两个指令的作用不同，属性指令用来改变一个DOM元素的外观或者行为，结构指令用来改变HTML的布局，塑造或者重塑DOM结构。根据作用来看的话，个人觉得自定义属性指令的适用范围会更广，频率会更高。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/29/自定义指令的学习归纳/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-表单学习归纳" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-表单学习归纳" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -1687,6 +593,27 @@ export class AppComponent implements OnInit {
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -1694,16 +621,79 @@ export class AppComponent implements OnInit {
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/29/表单学习归纳/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/29/表单学习归纳/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/08/29/自定义指令的学习归纳/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1723,8 +713,14 @@ export class AppComponent implements OnInit {
 
 
 
+  
+  
+  
 
   
+
+  
+
   
 
 
@@ -1747,8 +743,8 @@ export class AppComponent implements OnInit {
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
