@@ -1,192 +1,33 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="angular"><title> | 七罪的前端学习小天地</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">七罪的前端学习小天地</h1><a id="logo" href="/.">七罪的前端学习小天地</a><p class="description">欢迎一起来探索前端的道路</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta">Sep 3, 2018</div><div class="post-content"><p>#组件服务注入<br>在组件中注入服务。</p>
-<p>##创建基础组件</p>
-<blockquote>
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="angular"><title>依赖注入学习归纳 | 七罪的前端学习小天地</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">依赖注入学习归纳</h1><a id="logo" href="/.">七罪的前端学习小天地</a><p class="description">欢迎一起来探索前端的道路</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">依赖注入学习归纳</h1><div class="post-meta">Sep 3, 2018</div><div class="post-content"><h1 id="组件服务注入"><a href="#组件服务注入" class="headerlink" title="组件服务注入"></a>组件服务注入</h1><p>在组件中注入服务。</p>
+<h2 id="创建基础组件"><a href="#创建基础组件" class="headerlink" title="创建基础组件"></a>创建基础组件</h2><blockquote>
 <p>在组件中直接创建用户的信息。</p>
 </blockquote>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users:Array&lt;{id:number;age:number;name:string}&gt;;
-
-  constructor(){}
-
-  ngOnInit(){
-    this.users = [
-      {id:1,age:20,name:&quot;sin&quot;},
-      {id:2,age:20,name:&quot;Angular&quot;},
-      {id:3,age:20,name:&quot;TypeScript&quot;},
-      {id:4,age:20,name:&quot;Node&quot;},
-      {id:5,age:20,name:&quot;Git&quot;},
-    ]
-  }
-}
-</code></pre><p>##在AppModule中导入该组件</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
-import { NgModule } from &apos;@angular/core&apos;;
-
-import { AppComponent } from &apos;./app.component&apos;;
-import { UserComponent } from &apos;./user.component&apos;;
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-</code></pre><p>##在AppComponent中使用这个模板</p>
-<pre><code>import { Component } from &apos;@angular/core&apos;;
-
-@Component({
-  selector: &apos;app-root&apos;,
-  template: `
-    &lt;app-user&gt;&lt;/app-user&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class AppComponent{
-
-}
-</code></pre><p>##创建服务，使用服务来进行用户列表信息的储存</p>
-<p>###创建服务文件</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class UserService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:1,age:20,name:&quot;sin&quot;},
-        {id:2,age:20,name:&quot;Angular&quot;},
-        {id:3,age:20,name:&quot;TypeScript&quot;},
-        {id:4,age:20,name:&quot;Node&quot;},
-        {id:5,age:20,name:&quot;Git&quot;},
-      ]
-}
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component,OnInit &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-user&apos;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li *ngFor=&quot;let user of users&quot;&gt;</span><br><span class="line">        ID：&#123;&#123;user.id&#125;&#125; - 年龄：&#123;&#123;user.age&#125;&#125; - 姓名：&#123;&#123;user.name&#125;&#125;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  `,</span><br><span class="line">  styleUrls: [&apos;./app.component.css&apos;]</span><br><span class="line">&#125;)</span><br><span class="line">export class UserComponent implements OnInit &#123;</span><br><span class="line"></span><br><span class="line">  users:Array&lt;&#123;id:number;age:number;name:string&#125;&gt;;</span><br><span class="line"></span><br><span class="line">  constructor()&#123;&#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit()&#123;</span><br><span class="line">    this.users = [</span><br><span class="line">      &#123;id:1,age:20,name:&quot;sin&quot;&#125;,</span><br><span class="line">      &#123;id:2,age:20,name:&quot;Angular&quot;&#125;,</span><br><span class="line">      &#123;id:3,age:20,name:&quot;TypeScript&quot;&#125;,</span><br><span class="line">      &#123;id:4,age:20,name:&quot;Node&quot;&#125;,</span><br><span class="line">      &#123;id:5,age:20,name:&quot;Git&quot;&#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="在AppModule中导入该组件"><a href="#在AppModule中导入该组件" class="headerlink" title="在AppModule中导入该组件"></a>在AppModule中导入该组件</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   import &#123; BrowserModule &#125; from &apos;@angular/platform-browser&apos;;</span><br><span class="line">import &#123; NgModule &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">import &#123; AppComponent &#125; from &apos;./app.component&apos;;</span><br><span class="line">import &#123; UserComponent &#125; from &apos;./user.component&apos;;</span><br><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    UserComponent</span><br><span class="line">  ],</span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule</span><br><span class="line">  ],</span><br><span class="line">  providers: [],</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="在AppComponent中使用这个模板"><a href="#在AppComponent中使用这个模板" class="headerlink" title="在AppComponent中使用这个模板"></a>在AppComponent中使用这个模板</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   import &#123; Component &#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-root&apos;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;app-user&gt;&lt;/app-user&gt;</span><br><span class="line">  `,</span><br><span class="line">  styleUrls: [&apos;./app.component.css&apos;]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppComponent&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="创建服务，使用服务来进行用户列表信息的储存"><a href="#创建服务，使用服务来进行用户列表信息的储存" class="headerlink" title="创建服务，使用服务来进行用户列表信息的储存"></a>创建服务，使用服务来进行用户列表信息的储存</h2><h3 id="创建服务文件"><a href="#创建服务文件" class="headerlink" title="创建服务文件"></a>创建服务文件</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   import &#123; Injectable &#125; from &quot;@angular/core&quot;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class UserService &#123;</span><br><span class="line">    users:Array&lt;&#123;id:number;age:number;name:string&#125;&gt; = [</span><br><span class="line">        &#123;id:1,age:20,name:&quot;sin&quot;&#125;,</span><br><span class="line">        &#123;id:2,age:20,name:&quot;Angular&quot;&#125;,</span><br><span class="line">        &#123;id:3,age:20,name:&quot;TypeScript&quot;&#125;,</span><br><span class="line">        &#123;id:4,age:20,name:&quot;Node&quot;&#125;,</span><br><span class="line">        &#123;id:5,age:20,name:&quot;Git&quot;&#125;,</span><br><span class="line">      ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>要养成一个习惯，无论有没有注入，在创建服务文件的时候都要创建Injectable装饰器。</p>
 </blockquote>
-<p>###在AppModule中导入服务</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
-
-@Injectable()
-export class UserService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:1,age:20,name:&quot;sin&quot;},
-        {id:2,age:20,name:&quot;Angular&quot;},
-        {id:3,age:20,name:&quot;TypeScript&quot;},
-        {id:4,age:20,name:&quot;Node&quot;},
-        {id:5,age:20,name:&quot;Git&quot;},
-      ]
-
-    getLog(){
-        console.log(&apos;用户信息&apos;,this.users);
-    }
-}
+<h3 id="在AppModule中导入服务"><a href="#在AppModule中导入服务" class="headerlink" title="在AppModule中导入服务"></a>在AppModule中导入服务</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable &#125; from &quot;@angular/core&quot;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class UserService &#123;</span><br><span class="line">    users:Array&lt;&#123;id:number;age:number;name:string&#125;&gt; = [</span><br><span class="line">        &#123;id:1,age:20,name:&quot;sin&quot;&#125;,</span><br><span class="line">        &#123;id:2,age:20,name:&quot;Angular&quot;&#125;,</span><br><span class="line">        &#123;id:3,age:20,name:&quot;TypeScript&quot;&#125;,</span><br><span class="line">        &#123;id:4,age:20,name:&quot;Node&quot;&#125;,</span><br><span class="line">        &#123;id:5,age:20,name:&quot;Git&quot;&#125;,</span><br><span class="line">      ]</span><br><span class="line"></span><br><span class="line">    getLog()&#123;</span><br><span class="line">        console.log(&apos;用户信息&apos;,this.users);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>这里估计设置了一个方法，因为服务主要作用还是提供一些隐式的功能（运行过程不会在页面上有显示的功能）。</p>
 </blockquote>
-<p>###在组件中注入该服务并使用</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
-import { UserService } from &apos;./user.service&apos;;
-
-@Component({
-  selector: &apos;app-user&apos;,
-  template: `
-    &lt;ul&gt;
-      &lt;li *ngFor=&quot;let user of users&quot;&gt;
-        ID：{{user.id}} - 年龄：{{user.age}} - 姓名：{{user.name}}
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  `,
-  styleUrls: [&apos;./app.component.css&apos;]
-})
-export class UserComponent implements OnInit {
-
-  users:Array&lt;{id:number;age:number;name:string}&gt;;
-
-  constructor(private userService:UserService){}
-
-  ngOnInit(){
-    this.users = this.userService.users;
-    this.userService.getLog();
-  }
-}
-</code></pre><p>#ClassProvider类提供商</p>
-<p>##Demo</p>
-<blockquote>
+<h3 id="在组件中注入该服务并使用"><a href="#在组件中注入该服务并使用" class="headerlink" title="在组件中注入该服务并使用"></a>在组件中注入该服务并使用</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">   import &#123; Component,OnInit &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; UserService &#125; from &apos;./user.service&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  selector: &apos;app-user&apos;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li *ngFor=&quot;let user of users&quot;&gt;</span><br><span class="line">        ID：&#123;&#123;user.id&#125;&#125; - 年龄：&#123;&#123;user.age&#125;&#125; - 姓名：&#123;&#123;user.name&#125;&#125;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  `,</span><br><span class="line">  styleUrls: [&apos;./app.component.css&apos;]</span><br><span class="line">&#125;)</span><br><span class="line">export class UserComponent implements OnInit &#123;</span><br><span class="line"></span><br><span class="line">  users:Array&lt;&#123;id:number;age:number;name:string&#125;&gt;;</span><br><span class="line"></span><br><span class="line">  constructor(private userService:UserService)&#123;&#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit()&#123;</span><br><span class="line">    this.users = this.userService.users;</span><br><span class="line">    this.userService.getLog();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="ClassProvider类提供商"><a href="#ClassProvider类提供商" class="headerlink" title="ClassProvider类提供商"></a>ClassProvider类提供商</h1><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><blockquote>
 <p>这里使用别名类提供商进行一个示例的编写</p>
 </blockquote>
-<p>###创建一个新的服务<br>    import { Injectable } from “@angular/core”;</p>
-<pre><code>@Injectable()
-export class MarkService {
-    users:Array&lt;{id:number;age:number;name:string}&gt; = [
-        {id:11,age:21,name:&quot;狗蛋&quot;},
-        {id:12,age:22,name:&quot;二狗子&quot;},
-        {id:13,age:23,name:&quot;小虎&quot;},
-        {id:14,age:24,name:&quot;傻根&quot;},
-        {id:15,age:25,name:&quot;三儿&quot;},
-      ]
+<h3 id="创建一个新的服务"><a href="#创建一个新的服务" class="headerlink" title="创建一个新的服务"></a>创建一个新的服务</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable &#125; from &quot;@angular/core&quot;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class MarkService &#123;</span><br><span class="line">    users:Array&lt;&#123;id:number;age:number;name:string&#125;&gt; = [</span><br><span class="line">        &#123;id:11,age:21,name:&quot;狗蛋&quot;&#125;,</span><br><span class="line">        &#123;id:12,age:22,name:&quot;二狗子&quot;&#125;,</span><br><span class="line">        &#123;id:13,age:23,name:&quot;小虎&quot;&#125;,</span><br><span class="line">        &#123;id:14,age:24,name:&quot;傻根&quot;&#125;,</span><br><span class="line">        &#123;id:15,age:25,name:&quot;三儿&quot;&#125;,</span><br><span class="line">      ]</span><br><span class="line"></span><br><span class="line">    getLog()&#123;</span><br><span class="line">        console.log(&apos;用户信息&apos;,this.users);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="更新AppModule代码"><a href="#更新AppModule代码" class="headerlink" title="更新AppModule代码"></a>更新AppModule代码</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	import &#123; UserService &#125; from &apos;./user.service&apos;;</span><br><span class="line">	import &#123; MarkService &#125; from &apos;./mark.service&apos;;</span><br><span class="line">	</span><br><span class="line">	@NgModule(&#123;</span><br><span class="line">	  declarations: [...],</span><br><span class="line">	  imports: [...],</span><br><span class="line">	  providers: [</span><br><span class="line">	    &#123;provide:UserService,useClass:MarkService&#125;</span><br><span class="line">	  ],</span><br><span class="line">	  bootstrap: [...]</span><br><span class="line">	&#125;)</span><br><span class="line">	export class AppModule &#123; &#125;</span><br><span class="line">	``` </span><br><span class="line">&gt; 请求UserService时，返回MarkService</span><br><span class="line"></span><br><span class="line">### 运行结果</span><br></pre></td></tr></table></figure>
 
-    getLog(){
-        console.log(&apos;用户信息&apos;,this.users);
-    }
-}
-</code></pre><p>###更新AppModule代码</p>
-<pre><code>import { UserService } from &apos;./user.service&apos;;
-import { MarkService } from &apos;./mark.service&apos;;
-
-@NgModule({
-  declarations: [...],
-  imports: [...],
-  providers: [
-    {provide:UserService,useClass:MarkService}
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-</code></pre><blockquote>
-<p>请求UserService时，返回MarkService</p>
-</blockquote>
-<p>###运行结果</p>
-<pre><code>ID：11 - 年龄：21 - 姓名：狗蛋
+ID：11 - 年龄：21 - 姓名：狗蛋
 ID：12 - 年龄：22 - 姓名：二狗子
 ID：13 - 年龄：23 - 姓名：小虎
 ID：14 - 年龄：24 - 姓名：傻根
 ID：15 - 年龄：25 - 姓名：三儿
-</code></pre><p>##总结<br>类提供商有许多用法，基本的类提供商有两种写法。<br>第一种是全部写出来的，比如上面的示例：</p>
-<blockquote>
-<p>providers: [{provide:UserService,useClass:MarkService}]</p>
-</blockquote>
-<p>第二种是简写：</p>
-<blockquote>
-<p>providers:[UserService]</p>
-</blockquote>
-<blockquote>
-<p>这个式子等同于：</p>
-</blockquote>
-<blockquote>
-<p>providers: [{provide:UserService,useClass:UserService}]</p>
-</blockquote>
-<p>#FactoryProvider工厂提供商</p>
-<p>##Demo</p>
-<p>###创建一个新的服务文件</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">## 总结</span><br><span class="line">类提供商有许多用法，基本的类提供商有两种写法。</span><br><span class="line">第一种是全部写出来的，比如上面的示例：</span><br><span class="line">&gt; providers: [&#123;provide:UserService,useClass:MarkService&#125;]</span><br><span class="line"></span><br><span class="line">第二种是简写：</span><br><span class="line">&gt; providers:[UserService]</span><br><span class="line"></span><br><span class="line">&gt; 这个式子等同于：</span><br><span class="line"></span><br><span class="line">&gt; providers: [&#123;provide:UserService,useClass:UserService&#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># FactoryProvider工厂提供商</span><br><span class="line">## Demo</span><br><span class="line">### 创建一个新的服务文件</span><br></pre></td></tr></table></figure>
+
+import { Injectable } from &quot;@angular/core&quot;;
 
 @Injectable()
 export class LoggerService{
@@ -197,11 +38,9 @@ export class LoggerService{
         }
     }
 }
-</code></pre><blockquote>
-<p>构造函数中的private enable:boolean表示我们要注入Type类型的对象。boolean是表示基本数据类型，并不是所需的Type类型</p>
-</blockquote>
-<p>###在AppModule中导入该服务</p>
-<pre><code>import { LoggerService } from &apos;./logger.service&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 构造函数中的private enable:boolean表示我们要注入Type类型的对象。boolean是表示基本数据类型，并不是所需的Type类型</span><br><span class="line"></span><br><span class="line">### 在AppModule中导入该服务</span><br></pre></td></tr></table></figure>
+
+import { LoggerService } from &apos;./logger.service&apos;;
 
 @NgModule({
   declarations: [...],
@@ -215,11 +54,9 @@ export class LoggerService{
   bootstrap: [...]
 })
 export class AppModule { }
-</code></pre><blockquote>
-<p>这里的useFactory就是FactoryProvider的创建方法。</p>
-</blockquote>
-<p>###在模板中使用</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这里的useFactory就是FactoryProvider的创建方法。</span><br><span class="line"></span><br><span class="line">### 在模板中使用</span><br></pre></td></tr></table></figure>
+
+import { Component,OnInit } from &apos;@angular/core&apos;;
 import { UserService } from &apos;./user.service&apos;;
 import { LoggerService } from &apos;./logger.service&apos;;
 
@@ -246,9 +83,9 @@ export class UserComponent implements OnInit {
     this.loggerService.log(&apos;你好&apos;);
   }
 }
-</code></pre><p>##使用FactoryProvider的deps属性配置依赖对象</p>
-<p>###创建一个新的服务</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 使用FactoryProvider的deps属性配置依赖对象</span><br><span class="line">### 创建一个新的服务</span><br></pre></td></tr></table></figure>
+
+import { Injectable } from &quot;@angular/core&quot;;
 
 @Injectable()
 export class ConsoleService{
@@ -256,8 +93,9 @@ export class ConsoleService{
         console.log(`ConsoleService:${message}`);
     }
 }
-</code></pre><p>###将新的服务注入进LoggerService中</p>
-<pre><code>import { Injectable } from &quot;@angular/core&quot;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 将新的服务注入进LoggerService中</span><br></pre></td></tr></table></figure>
+
+import { Injectable } from &quot;@angular/core&quot;;
 import { ConsoleService } from &quot;./console.service&quot;;
 
 @Injectable()
@@ -269,11 +107,9 @@ export class LoggerService{
         }
     }
 }
-</code></pre><blockquote>
-<p>依赖注入可以把服务注入组件中，也可以把一个服务注入其他服务中。</p>
-</blockquote>
-<p>###在AppModule中使用deps属性<br>AppModule整体代码如下：</p>
-<pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 依赖注入可以把服务注入组件中，也可以把一个服务注入其他服务中。</span><br><span class="line"></span><br><span class="line">### 在AppModule中使用deps属性</span><br><span class="line">AppModule整体代码如下：</span><br></pre></td></tr></table></figure>
+
+import { BrowserModule } from &apos;@angular/platform-browser&apos;;
 import { NgModule } from &apos;@angular/core&apos;;
 
 import { AppComponent } from &apos;./app.component&apos;;
@@ -301,14 +137,9 @@ import { ConsoleService } from &apos;./console.service&apos;;
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-</code></pre><blockquote>
-<p>正常情况下，ConsoleService是为了防止在其他平台（除浏览器以外的）运行时，console.log()出现问题，而在内部实现一个统一的console接口，这里不做内部实现，只是简单制作一个ConsoleService来展示deps属性的使用。</p>
-</blockquote>
-<p>##总结</p>
-<p>工厂提供商，指的是提供商是一个工厂方法。可以用于动态创建依赖值（特别是创建的所需信息最后才能确定或者不停变化的时候）。必须使用对应的useFactory才可以创建工厂提供商。deps属性用于声明工厂方法的依赖对象列表，可以声明多个。</p>
-<p>#Value值提供商</p>
-<p>##创建user.json文件</p>
-<pre><code>{
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; 正常情况下，ConsoleService是为了防止在其他平台（除浏览器以外的）运行时，console.log()出现问题，而在内部实现一个统一的console接口，这里不做内部实现，只是简单制作一个ConsoleService来展示deps属性的使用。</span><br><span class="line"></span><br><span class="line">## 总结</span><br><span class="line"></span><br><span class="line">工厂提供商，指的是提供商是一个工厂方法。可以用于动态创建依赖值（特别是创建的所需信息最后才能确定或者不停变化的时候）。必须使用对应的useFactory才可以创建工厂提供商。deps属性用于声明工厂方法的依赖对象列表，可以声明多个。</span><br><span class="line"></span><br><span class="line"># Value值提供商</span><br><span class="line">## 创建user.json文件</span><br></pre></td></tr></table></figure>
+
+{
  &quot;users&quot;:[
     {&quot;id&quot;:21,&quot;age&quot;:20,&quot;name&quot;:&quot;sin&quot;},
     {&quot;id&quot;:22,&quot;age&quot;:20,&quot;name&quot;:&quot;Angular&quot;},
@@ -317,11 +148,9 @@ export class AppModule { }
     {&quot;id&quot;:25,&quot;age&quot;:20,&quot;name&quot;:&quot;Git&quot;}
  ]
 }
-</code></pre><blockquote>
-<p>配合使用json-server来模拟搭建一个后台接口</p>
-</blockquote>
-<p>##更新user.service.ts文件，使用httpClient请求</p>
-<pre><code>import { Injectable, Inject } from &quot;@angular/core&quot;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 配合使用json-server来模拟搭建一个后台接口</span><br><span class="line"></span><br><span class="line">## 更新user.service.ts文件，使用httpClient请求</span><br></pre></td></tr></table></figure>
+
+import { Injectable, Inject } from &quot;@angular/core&quot;;
 import { HttpClient } from &quot;@angular/common/http&quot;;
 
 @Injectable()
@@ -337,8 +166,9 @@ export class UserService {
             })
     }
 }
-</code></pre><p>##在AppModule中使用ValueProvider</p>
-<pre><code>import {HttpClientModule} from &apos;@angular/common/http&apos;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 在AppModule中使用ValueProvider</span><br></pre></td></tr></table></figure>
+
+import {HttpClientModule} from &apos;@angular/common/http&apos;
 
 @NgModule({
   declarations: [...],
@@ -353,8 +183,9 @@ export class UserService {
   bootstrap: [...]
 })
 export class AppModule { }
-</code></pre><p>##更新用户组件</p>
-<pre><code>import { Component,OnInit } from &apos;@angular/core&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 更新用户组件</span><br></pre></td></tr></table></figure>
+
+import { Component,OnInit } from &apos;@angular/core&apos;;
 import { UserService } from &apos;./user.service&apos;;
 import { LoggerService } from &apos;./logger.service&apos;;
 
@@ -382,28 +213,24 @@ export class UserComponent implements OnInit {
     this.loggerService.log(&apos;你好&apos;);
   }
 }
-</code></pre><p>##输出结果</p>
-<pre><code>ID：21 - 年龄：20 - 姓名：sin
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 输出结果</span><br></pre></td></tr></table></figure>
+
+ID：21 - 年龄：20 - 姓名：sin
 ID：22 - 年龄：20 - 姓名：Angular
 ID：23 - 年龄：20 - 姓名：TypeScript
 ID：24 - 年龄：20 - 姓名：Node
 ID：25 - 年龄：20 - 姓名：Git
-</code></pre><p>##总结</p>
-<p>ValueProvider可以用来储存http的地址，特别是在多个组件需要同时请求同一个地址时。</p>
-<p>#InjectToken</p>
-<p>##假设使用场景<br>假设上述代码，引入第三方库，第三方库中有一个使用了相同字符串的Token，这样会导致http请求失败，或者第三方库无法正常工作。</p>
-<p>###创建一个文件来模拟第三方库</p>
-<blockquote>
-<p>third-lib.ts</p>
-</blockquote>
-<pre><code>export const THIRD_PARTY_PROVIDERS = [
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">## 总结</span><br><span class="line"></span><br><span class="line">ValueProvider可以用来储存http的地址，特别是在多个组件需要同时请求同一个地址时。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># InjectToken</span><br><span class="line"></span><br><span class="line">## 假设使用场景</span><br><span class="line"></span><br><span class="line">假设上述代码，引入第三方库，第三方库中有一个使用了相同字符串的Token，这样会导致http请求失败，或者第三方库无法正常工作。</span><br><span class="line"></span><br><span class="line">### 创建一个文件来模拟第三方库</span><br><span class="line">&gt; third-lib.ts</span><br></pre></td></tr></table></figure>
+
+export const THIRD_PARTY_PROVIDERS = [
     {
         provide: &apos;apiUrl&apos;,
         useValue: &apos;Other Url&apos;
     }
 ]
-</code></pre><p>###导入AppModule</p>
-<pre><code>import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 导入AppModule</span><br></pre></td></tr></table></figure>
+
+import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
 
 @NgModule({
   declarations: [...],
@@ -418,18 +245,14 @@ ID：25 - 年龄：20 - 姓名：Git
   bootstrap: [...]
 })
 export class AppModule { }
-</code></pre><blockquote>
-<p>这时候页面已经会发生报错，并且不能正确请求数据，原因是请求的地址发生改变。</p>
-</blockquote>
-<p>###新建一个用来保存Token的文件</p>
-<blockquote>
-<p>app.token.ts</p>
-</blockquote>
-<pre><code>import { InjectionToken } from &apos;@angular/core&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这时候页面已经会发生报错，并且不能正确请求数据，原因是请求的地址发生改变。</span><br><span class="line"></span><br><span class="line">### 新建一个用来保存Token的文件</span><br><span class="line">&gt; app.token.ts</span><br></pre></td></tr></table></figure>
+
+import { InjectionToken } from &apos;@angular/core&apos;;
 
 export const API_URL = new InjectionToken&lt;string&gt;(&apos;apiUrl&apos;);
-</code></pre><p>###更新AppModule</p>
-<pre><code>import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 更新AppModule</span><br></pre></td></tr></table></figure>
+
+import { THIRD_PARTY_PROVIDERS } from &apos;./third-lib&apos;;
 import { API_URL } from &apos;./app.tokens&apos;;
 
 @NgModule({
@@ -443,11 +266,9 @@ import { API_URL } from &apos;./app.tokens&apos;;
   bootstrap: [...]
 })
 export class AppModule { }
-</code></pre><blockquote>
-<p>这里的代码就变成了当请求内容为API_URL文件内容时，返回useValue的值</p>
-</blockquote>
-<p>###更新UserService服务</p>
-<pre><code>import { Injectable, Inject } from &quot;@angular/core&quot;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这里的代码就变成了当请求内容为API_URL文件内容时，返回useValue的值</span><br><span class="line"></span><br><span class="line">### 更新UserService服务</span><br></pre></td></tr></table></figure>
+
+import { Injectable, Inject } from &quot;@angular/core&quot;;
 import { HttpClient } from &quot;@angular/common/http&quot;;
 import { API_URL } from &quot;./app.tokens&quot;;
 
@@ -464,11 +285,9 @@ export class UserService {
             })
     }
 }
-</code></pre><blockquote>
-<p>修改注入的参数</p>
-</blockquote>
-<p>###验证</p>
-<pre><code>import { InjectionToken } from &apos;@angular/core&apos;;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 修改注入的参数</span><br><span class="line"></span><br><span class="line">### 验证</span><br></pre></td></tr></table></figure>
+
+import { InjectionToken } from &apos;@angular/core&apos;;
 
 const API_URL = new InjectionToken&lt;string&gt;(&apos;apiUrl&apos;);
 
@@ -478,10 +297,10 @@ export const THIRD_PARTY_PROVIDERS = [
         useValue: &apos;Other Url&apos;
     }
 ]
+```
 </code></pre><blockquote>
 <p>将模拟的第三方库修改一下，把Token修改成一致的，来验证InjectToken的作用是否还能生效。结果是生效的。</p>
 </blockquote>
-<p>##总结</p>
-<p>InjectToken是一个很好的解决字符串Token冲突的方法，在开发其他应用时，如果使用字符串Token，直接使用InjectToken。这样可以避免后期新增引入第三方库出现冲突情况。</p>
-<p>#使用感想<br>依赖注入是Angular一个非常强大并且实用的技术，许多项目都能使用到，方便程序员后期查询某些代码时更加方便，也让组件的代码变得更加简洁明了。</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/09/04/管道的学习归纳/">管道</a><a class="next" href="/2018/08/29/自定义指令的学习归纳/"></a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Angular/" style="font-size: 15px;">Angular</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/绑定的学习归纳/">绑定的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/测试文档/">测试文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Hexo博客建立/">Hexo博客建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/博客说明/">关于本博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/管道的学习归纳/">管道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/依赖注入学习归纳/">依赖注入学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/表单学习归纳/">表单学习归纳</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">七罪的前端学习小天地.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>InjectToken是一个很好的解决字符串Token冲突的方法，在开发其他应用时，如果使用字符串Token，直接使用InjectToken。这样可以避免后期新增引入第三方库出现冲突情况。</p>
+<h1 id="使用感想"><a href="#使用感想" class="headerlink" title="使用感想"></a>使用感想</h1><p>依赖注入是Angular一个非常强大并且实用的技术，许多项目都能使用到，方便程序员后期查询某些代码时更加方便，也让组件的代码变得更加简洁明了。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/09/04/管道的学习归纳/">管道学习归纳</a><a class="next" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Angular/" style="font-size: 15px;">Angular</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/绑定的学习归纳/">绑定的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Hexo博客建立/">使用Hexo+GitHub io创建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/博客说明/">关于本博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/管道的学习归纳/">管道学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/依赖注入学习归纳/">依赖注入学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/表单学习归纳/">表单学习归纳</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">七罪的前端学习小天地.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
