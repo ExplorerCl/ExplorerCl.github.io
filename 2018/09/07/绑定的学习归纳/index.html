@@ -1,0 +1,175 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="angular"><title>绑定的学习归纳 | 七罪的前端学习小天地</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">绑定的学习归纳</h1><a id="logo" href="/.">七罪的前端学习小天地</a><p class="description">欢迎一起来探索前端的道路</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/"><i class="fa fa-user"> Über</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">绑定的学习归纳</h1><div class="post-meta">Sep 7, 2018</div><div class="post-content"><h1 id="单项绑定"><a href="#单项绑定" class="headerlink" title="单项绑定"></a>单项绑定</h1><h2 id="属性绑定的使用"><a href="#属性绑定的使用" class="headerlink" title="属性绑定的使用"></a>属性绑定的使用</h2><p>语法：[…]=”…”</p>
+<h3 id="元素属性设置为组件属性的值"><a href="#元素属性设置为组件属性的值" class="headerlink" title="元素属性设置为组件属性的值"></a>元素属性设置为组件属性的值</h3><pre><code>import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+    &lt;div&gt;
+      &lt;img [src]=&quot;imgUrl&quot; &gt;
+    &lt;/div&gt;
+  `,
+  styleUrls: [&apos;./app.component.css&apos;]
+})
+export class AppComponent {
+  imgUrl = &quot;http://cdnq.duitang.com/uploads/item/201503/15/20150315190558_8XLhj.thumb.700_0.jpeg&quot;;
+}
+</code></pre><blockquote>
+<p>imgUrl的值可以写固定值也可以设置成动态获取的值，具体看使用需求，这里直接使用网上找的图片来作为一个显示。</p>
+</blockquote>
+<h3 id="用于禁用按钮"><a href="#用于禁用按钮" class="headerlink" title="用于禁用按钮"></a>用于禁用按钮</h3><pre><code>import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+      &lt;form #userForm=&quot;ngForm&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;名字不能为空&quot; required ngModel/&gt;
+        &lt;button [disabled]=&quot;userForm.invalid&quot;&gt;提交&lt;/button&gt;
+      &lt;/form&gt;
+  `,
+})
+export class AppComponent {
+}
+</code></pre><blockquote>
+<p>模板驱动式表动就使用过的[disabled]=””语法，一般和表单绑定使用较多。</p>
+</blockquote>
+<h3 id="设置指令的属性"><a href="#设置指令的属性" class="headerlink" title="设置指令的属性"></a>设置指令的属性</h3><pre><code>import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+      &lt;div [ngClass]=&quot;{&apos;color&apos;:true}&quot;&gt;绑定类样式&lt;/div&gt;
+  `,
+  styles: [`
+    .color{
+      background-color: blue;
+    }
+  `]
+})
+export class AppComponent {
+
+}
+</code></pre><blockquote>
+<p>类似的还有ngStyle等指令</p>
+</blockquote>
+<h3 id="设置自定义组件的模型属性"><a href="#设置自定义组件的模型属性" class="headerlink" title="设置自定义组件的模型属性"></a>设置自定义组件的模型属性</h3><ul>
+<li>新建一个子组件</li>
+</ul>
+<p>设置input属性</p>
+<pre><code>import { Component, OnInit, Input } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-sub&apos;,
+  template: `
+    &lt;p&gt;你好呀,{{subName}}。我需要{{Number}}个苹果。&lt;/p&gt;
+  `,
+  styleUrls: [&apos;./sub.component.css&apos;]
+})
+export class SubComponent implements OnInit {
+  @Input()
+  subName:string;
+
+  @Input()
+  Number:number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }    
+}
+</code></pre><ul>
+<li>在父组件中使用该子组件的选择器标签</li>
+</ul>
+<p>这里做一个父子组件的传值。</p>
+<pre><code> import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; name=&quot;text&quot; (input)=&quot;onInput($event.target.value)&quot; /&gt;
+        &lt;app-sub [subName]=&quot;sub&quot; [Number]=&quot;20&quot;&gt;&lt;/app-sub&gt;
+      &lt;/div&gt;
+  `,
+})
+export class AppComponent {
+  sub;
+  onInput(value){
+    this.sub = value;
+    return this.sub;
+  }
+}
+</code></pre><blockquote>
+<p>这是父子组件之间通讯的一个重要途径。</p>
+</blockquote>
+<h3 id="一些拓展的小知识点"><a href="#一些拓展的小知识点" class="headerlink" title="一些拓展的小知识点"></a>一些拓展的小知识点</h3><ul>
+<li><p>规范形式</p>
+<p>规范形式需要加bind-前缀。<br>例如[src]=”imgUrl”的规范形式是bind-src=”imgUrl”。</p>
+</li>
+<li><p>消除副作用</p>
+<p>在某些情况下，表达式中调用某个方法，这个方法改变了某样东西，而你正好又绑定了这样东西。那么Angular有可能显示也有可能不显示变化后的值。一般情况下，建议只绑定数据属性和某些返回值，而不做其他事情。</p>
+</li>
+<li><p>返回相应的类型</p>
+<p>数据类型应该返回一个目标需要的类型的值，避免一些不必要的错误。</p>
+</li>
+</ul>
+<h2 id="事件绑定的使用"><a href="#事件绑定的使用" class="headerlink" title="事件绑定的使用"></a>事件绑定的使用</h2><p>语法：(…)=”…”</p>
+<p>###Demo</p>
+<pre><code>import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+      &lt;div [ngClass]=&quot;{&apos;box&apos;:true,&apos;red&apos;:off, &apos;green&apos;:!off}&quot;&gt;&lt;/div&gt;
+      &lt;button (click)=&quot;onClick()&quot;&gt;变颜色&lt;/button&gt;
+  `,
+  styles: [`
+    .box{
+      width:100px;
+      height:100px;
+    }
+    .red{
+      background-color: red;
+    }
+    .green{
+      background-color: green;
+    }
+  `]
+})
+export class AppComponent {
+  off:boolean = true;
+  onClick(){
+    this.off = !this.off;
+  }
+}
+</code></pre><h3 id="关于-event"><a href="#关于-event" class="headerlink" title="关于$event"></a>关于$event</h3><p>设置自定义组件的模型属性的Demo中便有使用到该对象。</p>
+<pre><code>&lt;div&gt;
+  &lt;input type=&quot;text&quot; name=&quot;text&quot; (input)=&quot;onInput($event.target.value)&quot; /&gt;
+  &lt;app-sub [subName]=&quot;sub&quot; [Number]=&quot;20&quot;&gt;&lt;/app-sub&gt;
+&lt;/div&gt;
+</code></pre><p>这里的目标事件时原生DOM元素事件，$event是DOM事件对象。$event.target.value会自动选择当前元素的输入值，target和target.value是$event的属性。</p>
+<p>思考：如果事件属于指令，那么$event具体是由什么指令决定？（问题来自于Angular官网）</p>
+<p>个人回答：我认为应该是由属性型指令决定，因为属性型指令是可以改变元素、组件或者其他指令的外观和行为的指令。$event可以传递事件的对应信息和数据，这些信息和数据会和元素的一些属性有关，通过对这些信息和数据做处理，就可以改变某些元素、组件或者其他指令的外观或者行为。</p>
+<h3 id="模板语句的“副作用”"><a href="#模板语句的“副作用”" class="headerlink" title="模板语句的“副作用”"></a>模板语句的“副作用”</h3><p>模板语句的副作用是，当其增加了或者删除了某个东西，对应的模型会自动更新，并且会向远端服务器进行查询和保存。</p>
+<h1 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h1><h2 id="双向数据绑定的使用"><a href="#双向数据绑定的使用" class="headerlink" title="双向数据绑定的使用"></a>双向数据绑定的使用</h2><p>语法：[(…)]=”…”</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><pre><code>import { Component } from &apos;@angular/core&apos;;
+
+@Component({
+  selector: &apos;app-root&apos;,
+  template: `
+      &lt;input type=&quot;text&quot; name=&quot;frameName&quot; [(ngModel)]=&quot;frameName&quot;&gt;
+      &lt;p&gt;我会{{frameName}}框架&lt;/p&gt;
+      &lt;button (click)=&quot;onChange()&quot;&gt;改变&lt;/button&gt;
+  `,
+})
+export class AppComponent {
+  frameName:string;
+  onChange(){
+    this.frameName = &apos;Jquery&apos;
+  }
+}
+</code></pre><blockquote>
+<p>这里特地增加了一个click方法，用于改变frameName的值，可以更好地了解双向绑定的所谓双向的概念。</p>
+</blockquote>
+<h3 id="需要注意"><a href="#需要注意" class="headerlink" title="需要注意"></a>需要注意</h3><p>原生HTML元素不遵循x值和xChange事件的模式，例如<code>&lt;input&gt;</code>和<code>&lt;select&gt;</code>元素。Demo中的input可以使用是因为配合使用了模板驱动式表单的ngModel指令。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>绑定也是一个非常强大的功能，将数据或者事件直接绑定在DOM元素上，减少寻找对应的DOM元素的过程，代码量也会大大减少。同时整个过程非常的方便，并且使用恰当是可以避免紧密耦合的。</p>
+</div><div class="tags"><a href="/tags/Angular/">Angular</a></div><div class="post-nav"><a class="next" href="/2018/09/06/测试文档/">测试文档</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Angular/" style="font-size: 15px;">Angular</a> <a href="/tags/angular/" style="font-size: 15px;">angular</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/绑定的学习归纳/">绑定的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/测试文档/">测试文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/Hexo博客建立/">Hexo博客建立</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/博客说明/">关于本博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/管道的学习归纳/">管道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/依赖注入学习归纳/">依赖注入学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/自定义指令的学习归纳/">自定义指令的学习归纳</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/29/表单学习归纳/">表单学习归纳</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">七罪的前端学习小天地.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
