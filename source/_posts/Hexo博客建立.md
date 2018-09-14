@@ -32,10 +32,7 @@ description: 记录一下自己创建博客的过程，和一些写文章时候�
 
 如果存在，可以删除.ssh文件夹里面所有文件，或者等下直接覆盖。然后输入
 
-
-    ``` 
-	ssh-keygen -t rsa -C "邮箱地址"
-	``` 
+	`ssh-keygen -t rsa -C "邮箱地址"`
 
 回车三次，在用户目录下找到一个.ssh\id_rsa.pub的文件，用记事本打开并复制内容。 （这里直接回车三次，使用了默认的值，如果想要详细设置，输入完成之后根据自己情况来设置内容再回车。）
 
@@ -45,11 +42,7 @@ description: 记录一下自己创建博客的过程，和一些写文章时候�
 
 ### 检测是否成功
 
-输入
-
-	``` 
-	ssh -T git@github.com 
-	```
+输入`ssh -T git@github.com `
 
 如果提示Are you sure you want to continue connecting (yes/no)?  输入yes
 如果跳出类似以下信息则说明配置成功：Hi XXX! You've successfully authenticated, but GitHub does not provide shell access.
